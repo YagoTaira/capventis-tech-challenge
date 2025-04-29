@@ -1,4 +1,5 @@
 # capventis-tech-challenge
+
 Technical project developed for Capventis as part of the technical assessment process.
 
 This project demonstrates a simple messaging pipeline using Go, NATS JetStream, and Docker Compose. It includes a producer that publishes data to JetStream and a consumer that listens for messages.
@@ -13,7 +14,7 @@ This project demonstrates a simple messaging pipeline using Go, NATS JetStream, 
 
 ```bash
 capventis-tech-challenge/
-├── docker-compose.yml     # Docker setup for NATS server
+├── docker-compose.yml      # Docker setup for NATS server
 ├── producer.go             # Go program to send messages to NATS JetStream
 ├── consumer.go             # Go program to consume messages from NATS JetStream
 ├── go.mod                  # Go module configuration
@@ -23,29 +24,38 @@ capventis-tech-challenge/
 ## ⚙️ How to Run the Project
 
 ### 1. Clone the repository
+
 ```bash
 git clone https://github.com/yourusername/capventis-tech-challenge.git
 cd capventis-tech-challenge
 ```
 
 ### 3. Start NATS Server with Docker Compose
+
 ```bash
 docker compose up
 ```
+
 This will start a NATS server with JetStream enabled and available on localhost:4222.
 
 ### 5. Run the Producer
+
 In a new terminal window:
+
 ```bash
 go run producer.go
 ```
+
 This sends a sample message to the messages stream on JetStream.
 
 ### 4. Run the Consumer
+
 In another terminal window:
+
 ```bash
 go run consumer.go
 ```
+
 The consumer listens for messages and prints them to the terminal.
 
 ## 🛡️ Resilience Testing (Coming Soon)
