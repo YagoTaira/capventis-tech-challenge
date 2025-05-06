@@ -35,7 +35,7 @@ func main() {
 	}
 
 	// Publish a message
-	_, err = js.Publish(subject, []byte("Hello from Yago!"))
+	_, err = js.Publish(subject, []byte("Hello from Capventis!"))
 	if err != nil {
 		log.Fatal(err)
 	}
