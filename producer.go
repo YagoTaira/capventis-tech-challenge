@@ -8,7 +8,7 @@ import (
 
 func main() {
 	// Connect to local NATS
-	nc, err := nats.Connect("nats://localhost:4222")
+	nc, err := nats.Connect("nats://localhost:4222,nats://localhost:4223")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -20,7 +20,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	// Make sure stream exists
+	// Stream name and subject name
 	streamName := "MESSAGES"
 	subject := "messages"
 

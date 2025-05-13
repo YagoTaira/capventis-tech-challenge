@@ -6,12 +6,20 @@ import (
 	"os"
 
 	"github.com/jackc/pgx/v5"
+	"github.com/joho/godotenv"
 	"github.com/nats-io/nats.go"
 )
 
+func init() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Println("No .env file found, continuing without it...")
+	}
+}
+
 func main() {
 	// Connect to NATS
-	nc, err := nats.Connect("nats://localhost:4222")
+	nc, err := nats.Connect("nats://localhost:4222,nats://localhost:4223")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -25,6 +33,9 @@ func main() {
 
 	// Connect to Postgres
 	dbURL := os.Getenv("DATABASE_URL")
+	if dbURL == "" {
+		log.Fatal("DATABASE_URL environment variable not set.")
+	}
 	conn, err := pgx.Connect(context.Background(), dbURL)
 	if err != nil {
 		log.Fatalf("Unable to connect to Postgres: %v", err)
@@ -57,7 +68,7 @@ func main() {
 		}
 
 		msg.Ack()
-		log.Println("Message saves to database.")
+		log.Println("Message saved to database.")
 	}, nats.Durable("my-consumer"), nats.ManualAck())
 	if err != nil {
 		log.Fatal(err)
