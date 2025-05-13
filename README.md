@@ -34,7 +34,7 @@ capventis-tech-challenge/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/capventis-tech-challenge.git
+git clone https://github.com/yagotaira/capventis-tech-challenge.git
 cd capventis-tech-challenge
 ```
 
