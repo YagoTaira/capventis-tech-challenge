@@ -70,6 +70,13 @@ go run consumer.go
 
 This connects to JetStream and PostgreSQL, listening to messages and saving them to the database.
 
+Note: If the error below is thrown then try to Run the Producer first.
+
+```bash
+nats: no stream matches subject
+exit status 1
+```
+
 ### 5. Run the Producer
 
 In another terminal window:
